@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 const {Pokemon, Type} = require('../db');
-const {API_URL, API_URL_TYPE} = process.env;
+const { API_URL_TYPE} = process.env;
 
 
 router.get('/',async (req,res,next) =>{
