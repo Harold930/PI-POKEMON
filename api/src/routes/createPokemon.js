@@ -7,8 +7,8 @@ const {Pokemon, Type} = require('../db');
 router.post('/',async (req,res,next) => {
 try {
     const {name, hp, attack, defense, speed, height, weight, types}  = req.body;
-    console.log(req.body)
-    await Pokemon.create({
+
+   let pokemonCreated =  await Pokemon.create({
         name, 
         hp, 
         attack, 
@@ -16,8 +16,16 @@ try {
         speed, 
         height, 
         weight
-    },{ include: Type})
-    res.send('HOLAAAA');
+    });
+
+    let typesDb = await Type.findAll({
+        where :{name: types}
+    });
+
+    pokemonCreated.addType(typesDb);
+
+    res.send('Pokemon created succesfully');
+
 }catch (error) {
     next(error);
 }

@@ -6,15 +6,16 @@ const { API_URL_TYPE} = process.env;
 
 
 router.get('/',async (req,res,next) =>{
+
 try {
     const types = await axios.get(`${API_URL_TYPE}`);
-    console.log(types.data);
-    let arrayTypes = [];
+
     for(let i = 0; i < types.data.results.length; i++){
         Type.findOrCreate({where :{name: types.data.results[i].name}, defaults:{ name :  types.data.results[i].name}});
-        arrayTypes.push(types.data.results[i].name);
     }
-    res.send(arrayTypes);
+
+    const typesDb = await Type.findAll();
+    res.send(typesDb);
 } catch (error) {
     next(error);
 }

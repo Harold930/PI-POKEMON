@@ -8,8 +8,6 @@ router.get('/', async (req,res,next) => {
 
 try {
     const name = req.query.name;
-    console.log(name)
-    console.log('----------------------------------------------------')
 
     //Primero pido los pokemons que están guardados de manera local, o sea, en mi base de datos pokemon.
 
@@ -18,11 +16,22 @@ try {
             name: name
         },
         include : Type
-    });
-    console.log(infoDataBase,'<<<----soy la informacion de la base de datos');
-    console.log('----------------------------------------------------')
-    if(infoDataBase.length !== 0){
-        res.send(infoDataBase);
+    });    
+    if(infoDataBase.length !== 0){ 
+        console.log(infoDataBase,'<<<----soy la informacion de la base de datos');
+        console.log('----------------------------------------------------')
+        const pokemonDataBase = {
+            id: infoDataBase[0].id,
+            name: infoDataBase[0].name,
+            attack: infoDataBase[0].attack,
+            defense: infoDataBase[0].defense,
+            speed: infoDataBase[0].speed,
+            height: infoDataBase[0].height,
+            weight: infoDataBase[0].weight,
+            types: infoDataBase[0].types.map(type => type.name),
+        }
+
+        res.send(pokemonDataBase);
     } else {
         //Luego, pido la misma información, pero a la API.
         axios.get(`${API_URL}/${name}`).then(response => {
@@ -33,10 +42,7 @@ try {
             let defenseStat = stats.find(element => element.stat.name === 'defense');
             let speedStat = stats.find(element => element.stat.name === 'speed');
             let arrayTypes = response.data.types;
-            
-            let arrayNamesTypes = [];
-            arrayTypes.map(elemento => {arrayNamesTypes.push(elemento.type.name)});
-            
+
             res.send({
                 id: response.data.id,
                 name: response.data.name,
@@ -46,7 +52,7 @@ try {
                 speed: speedStat.base_stat,
                 height: response.data.height,
                 weight: response.data.weight,
-                types: arrayNamesTypes
+                types: arrayTypes.map(type => type.type.name),
             })}, () => {res.status(404).send('Pokemon dont found')});
 
 }
