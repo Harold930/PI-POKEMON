@@ -1,9 +1,23 @@
+import React from 'react';
+import {Route} from 'react-router';
 import './App.css';
+import Home from './Components/Home/Home';
+import LandingPage from './Components/LandingPage/LandingPage';
+import Nav from './Components/Nav/Nav';
+import Detail from './Components/Detail/Detail';
+import Create from './Components/Create/Create';
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Pokemon</h1>
+   <header>
+      <Route  path = '/' component = {Nav}/>
+   </header>
+      <Route path='/pokemons/name' component = {Detail}/>
+      <Route exact path = '/' component = {LandingPage}/>
+      <Route  path = '/home' component = {Home}/>
+      <Route path = '/pokemons/id' component={Detail}/>
+      <Route path = '/pokemons/create' component={Create}/>
     </div>
   );
 }
