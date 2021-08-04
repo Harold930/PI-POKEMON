@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Pokemon from '../Pokemon/Pokemon'
 
-export default function Pokemons(){
+export default function Pokemons(props){
 
     return (
         <div>
-            <h3>SOY POKEMONSSSS</h3>
-            <Pokemon />
-        </div>
+        {props.pokemons.map((pokemon,i) => (
+            <Pokemon pokemon={pokemon} key = {i}/>
+        ))}
+    </div>
     )
 
 }
