@@ -20,7 +20,7 @@ try {
             types: infoDataBase[i].types.map(type => type.name) //Acá primero voy a tener que modificar como viene la información. 
         })
     }
-    const infoApi = await axios.get(`${API_URL}?limit=4`);
+    const infoApi = await axios.get(`${API_URL}?limit=40`);
     console.log(infoApi.data.results,'<<<------------------Soy los primeros 40 pokemons que le pido a al api.');
     console.log('-----------------------------------------------');
     let responseApi = [];

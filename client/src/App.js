@@ -13,7 +13,7 @@ function App() {
    <header>
       <Route  path = '/' component = {Nav}/>
    </header>
-      <Route path='/pokemons/name' component = {Detail}/>
+      <Route path='/pokemons/search' component = {Detail}/>
       <Route exact path = '/' component = {LandingPage}/>
       <Route  path = '/home' component = {Home}/>
       <Route path = '/pokemons/:id' component={Detail}/>

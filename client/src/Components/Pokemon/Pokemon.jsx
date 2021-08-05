@@ -7,13 +7,14 @@ export default function Pokemon(props){
     return (
         <div>
             <h3>{props.pokemon.name}</h3>
-            <img src={props.pokemon.sprite} alt="Dont found" />
+            <Link to = {`/pokemons/${props.pokemon.id}`} > 
+                <img src={props.pokemon.sprite} alt="Dont found" />
+            </Link>
             <div>
                 {props.pokemon.types.map((pokemon,i) => (
                     <li key = {i}>{pokemon}</li>
-                    ))}
+                ))}
             </div>
-            <Link to = {`/detail/${props.pokemon.id}`} >MORE INFORMATION</Link>
         </div>
     )
 
