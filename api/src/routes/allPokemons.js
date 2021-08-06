@@ -17,7 +17,8 @@ try {
             id: infoDataBase[i].id,
             name: infoDataBase[i].name,
             sprite: infoDataBase[i].sprite,
-            types: infoDataBase[i].types.map(type => type.name) //Acá primero voy a tener que modificar como viene la información. 
+            types: infoDataBase[i].types.map(type => type.name), //Acá primero voy a tener que modificar como viene la información. 
+            attack: infoDataBase[i].attack
         })
     }
     const infoApi = await axios.get(`${API_URL}?limit=40`);
@@ -30,6 +31,7 @@ try {
         console.log(info);
         let sprite = info.data.sprites.front_default;
         let arrayTypes = info.data.types;
+        let attackStat = info.data.stats.find(element => element.stat.name === 'attack');
 
         // let arrayNamesTypes = [];
         // arrayTypes.map(elemento => {arrayNamesTypes.push(elemento.type.name)});
@@ -45,7 +47,8 @@ try {
             id: info.data.id,
             name: infoApi.data.results[i].name,
             sprite: sprite,
-            types: arrayTypes.map(el => el.type.name)
+            types: arrayTypes.map(el => el.type.name),
+            attack: attackStat.base_stat
         });
 
 
