@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router';
+import {Route ,Switch} from 'react-router';
 import './App.css';
 import Home from './Components/Home/Home';
 import LandingPage from './Components/LandingPage/LandingPage';
@@ -13,11 +13,13 @@ function App() {
    <header>
       <Route  path = '/' component = {Nav}/>
    </header>
-      <Route path='/pokemons/search?name' component = {Detail}/>
       <Route exact path = '/' component = {LandingPage}/>
-      <Route  path = '/home' component = {Home}/>
-      <Route path = '/pokemons/:id' component={Detail}/>
-      <Route path = '/pokemons/create' component={Create}/>
+      <Route path = '/home' component = {Home}/>
+      <Switch>
+          <Route path = '/pokemons/create' component={Create}/>
+          <Route path='/pokemons/search?name' component = {Detail}/>
+          <Route path = '/pokemons/:id' component={Detail}/>
+      </Switch>
     </div>
   );
 }

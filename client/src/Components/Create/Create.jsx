@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Create(){
+
+    const [input, setInput] = useState({
+        name: '',
+        attack: '',
+        speed: '',
+        defense: '',
+        height: '',
+        weight: '',
+    });
+
     return(
-            <h6>HOLA SOY CREATE</h6>
+            <div>
+                <form action="sumbit"></form>
+                <h3>soy create</h3>
+            </div>
     )
 }
