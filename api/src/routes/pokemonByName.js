@@ -29,19 +29,22 @@ try {
             height: infoDataBase[0].height,
             weight: infoDataBase[0].weight,
             types: infoDataBase[0].types.map(type => type.name),
+            // sprite:infoDataBase[0].sprite
         }
 
         res.send(pokemonDataBase);
     } else {
         //Luego, pido la misma información, pero a la API.
         axios.get(`${API_URL}/${name}`).then(response => {
-
+                console.log(name)
             let stats = response.data.stats;
             let hpStat = stats.find(element => element.stat.name === 'hp');
             let attackStat = stats.find(element => element.stat.name === 'attack');
             let defenseStat = stats.find(element => element.stat.name === 'defense');
             let speedStat = stats.find(element => element.stat.name === 'speed');
             let arrayTypes = response.data.types;
+            let version = 'generation-v';
+            let color = 'black-white';
 
             res.send({
                 id: response.data.id,
@@ -53,6 +56,7 @@ try {
                 height: response.data.height,
                 weight: response.data.weight,
                 types: arrayTypes.map(type => type.type.name),
+                sprite: response.data.sprites.versions[version][color].animated.front_default
             })}, () => {res.status(404).send('Pokemon dont found')});
 
 }

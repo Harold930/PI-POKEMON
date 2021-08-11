@@ -4,8 +4,7 @@ const initialState = {
   pokemons:[],
   allPokemons: [],
   types:[],
-  pokemonById:{},
-  pokemonByName:{}
+  pokemonById_Name:{}
 }
 function rootReducer(state = initialState, action){
     switch(action.type){
@@ -23,7 +22,7 @@ function rootReducer(state = initialState, action){
         case 'GET_POKEMONS_BY_NAME':
             return {
                 ...state,
-                pokemonByName: action.payload
+                pokemonById_Name: action.payload
             }
         case 'FILTER_BY_TYPE':
           const pokemonsFiltered = state.allPokemons.filter(pokemon => pokemon.types.includes(action.payload) === true);
@@ -102,7 +101,7 @@ function rootReducer(state = initialState, action){
         case 'GET_POKEMONS_BY_ID':
             return {
                 ...state,
-                pokemonById:action.payload
+                pokemonById_Name:action.payload
             }
         default: return state;
     }

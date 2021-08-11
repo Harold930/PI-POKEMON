@@ -1,15 +1,21 @@
 import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { getPokemonById } from '../../Redux/action';
+import { getPokemonById, getPokemonByName } from '../../Redux/action';
 
 export default function Detail({match}){
-// console.log(match.params.id);
+    console.log(match.params.id);
 
-const dispatch = useDispatch()
-    const pokemonById = useSelector(state => state.pokemonById);
+    const dispatch = useDispatch()
+    const pokemonById = useSelector(state => state.pokemonById_Name);
+    
 
     useEffect(() => {
-        dispatch(getPokemonById(match.params.id));
+        if(match.params.id){
+            dispatch(getPokemonById(match.params.id));
+        }
+        if(match.params.name){
+            dispatch(getPokemonByName(match.params.name));
+        }
     },[]);
 
     

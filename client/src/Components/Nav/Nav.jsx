@@ -14,6 +14,7 @@ export default function Nav({match}){
     function handleCLick(e){
         e.preventDefault();
         dispatch(getPokemonByName(name));
+        setName('')
     }
     return(
         <nav>
