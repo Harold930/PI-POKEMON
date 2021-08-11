@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getPokemonByName } from '../../Redux/action';
 
-export default function Nav(){
+export default function Nav({match}){
+    // console.log(match.name)
     const [name, setName] = useState('');
     const dispatch = useDispatch();
 
@@ -22,7 +23,7 @@ export default function Nav(){
            <Link to = '/home'>
             <h1>HOME</h1>
            </Link>
-            <button onClick={handleCLick}>Unalupita</button>
+            <button onClick={handleCLick}><Link to={`/pokemons/search?name=${name}`}>Unalupita</Link></button>
             <input type="text" placeholder='Search by name' value={name} onChange={handleChange}/>
         </nav>
     )
