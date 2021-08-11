@@ -38,9 +38,12 @@ try {
             let defenseStat = stats.find(element => element.stat.name === 'defense');
             let speedStat = stats.find(element => element.stat.name === 'speed');
             let arrayTypes = infoApi.data.types;
+            let version = 'generation-v';
+            let color = 'black-white';
 
-           return infoApi ?  res.send({
+            return infoApi ?  res.send({
                 id: infoApi.data.id,
+                sprite: infoApi.data.sprites.versions[version][color].animated.front_default,
                 name: infoApi.data.name,
                 hp: hpStat.base_stat,
                 attack: attackStat.base_stat,

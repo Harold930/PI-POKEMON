@@ -30,6 +30,16 @@ export function getPokemonByName(name){
         });
     }
 }
+export function getPokemonById(id){
+    return async function(dispatch){
+        let response = await axios.get(`http://localhost:3001/pokemons/${id}`, {responseType:'json'});
+        console.log(response.data)
+        return dispatch({
+            type: 'GET_POKEMONS_BY_ID',
+            payload: response.data
+        });
+    }
+}
 export function filterByType(typePokemon){
     console.log(typePokemon)
     return {

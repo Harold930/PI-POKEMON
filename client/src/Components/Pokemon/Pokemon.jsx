@@ -11,8 +11,8 @@ export default function Pokemon(props){
                 <img src={props.pokemon.sprite} alt="Dont found" />
             </Link>
             <div>
-                {props.pokemon.types.map((pokemon,i) => (
-                    <li key = {i}>{pokemon}</li>
+                {props.pokemon.types.map((type,i) => (
+                    <li key = {i}>{type}</li>
                 ))}
             </div>
         </div>

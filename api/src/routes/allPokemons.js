@@ -22,13 +22,13 @@ try {
         })
     }
     const infoApi = await axios.get(`${API_URL}?limit=40`);
-    console.log(infoApi.data.results,'<<<------------------Soy los primeros 40 pokemons que le pido a al api.');
+    // console.log(infoApi.data.results,'<<<------------------Soy los primeros 40 pokemons que le pido a al api.');
     console.log('-----------------------------------------------');
     let responseApi = [];
     for(let i = 0;i < infoApi.data.results.length; i++){
 
         let info = await axios.get(infoApi.data.results[i].url);
-        console.log(info);
+        // console.log(info);
         let sprite = info.data.sprites.front_default;
         let arrayTypes = info.data.types;
         let attackStat = info.data.stats.find(element => element.stat.name === 'attack');
