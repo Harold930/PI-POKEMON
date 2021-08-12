@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTypes } from '../../Redux/action';
+import { createPokemon, getTypes } from '../../Redux/action';
 
 export default function Create(){
     
     const dispatch = useDispatch();
     const types = useSelector((state) => state.types);
-    console.log(types)
+
     useEffect(() => {
         dispatch(getTypes());
     },[])
@@ -23,20 +23,20 @@ export default function Create(){
 
     function handleInput(e){
 
-        e.preventDefault();
+        // e.preventDefault();
 
-        if(e.target.name === 'types'){
-            const typesSelection = input.types;
-            setInput({
-                ...input,
-                [e.target.name]: typesSelection.push(e.target.value)
-            })
-        } else {
+        // if(e.target.name === 'types'){
+        //     const typesSelection = input.types;
+        //     setInput({
+        //         ...input,
+        //         [e.target.name]: typesSelection.push(e.target.value)
+        //     })
+        // } else {
             setInput({
                 ...input,
                 [e.target.name]: e.target.value
             });
-        }
+        // }
     }
     function handleCheckBox(e){
         if(e.target.checked){
@@ -50,6 +50,21 @@ export default function Create(){
                 types: input.types.filter(type => type !== e.target.value)
             });
         }
+    }
+
+    function handleSubmit(e){
+        e.preventDefault();
+        dispatch(createPokemon(input));
+
+        setInput({
+            name: '',
+            attack: 0,
+            speed: 0,
+            defense: 0,
+            height: 0,
+            weight: 0,
+            types:[]
+        })
     }
     return(
         <div>
@@ -103,7 +118,7 @@ export default function Create(){
                 <div>
                     <label>Types:</label>
                         <div>
-                        {types.map((type) =>{
+                        {types.map((type) =>(
                                 <span key = {type.id}>
                                     <input 
                                     type="checkbox" 
@@ -113,9 +128,10 @@ export default function Create(){
                                     />
                                     <label name={type}>{type.name}</label>
                                 </span>
-                            })}
+                        ))}
                         </div>
                 </div>
+                <button type='submit' onSubmit={handleSubmit}>SUBMIT</button>
             </form>
         </div>
     )

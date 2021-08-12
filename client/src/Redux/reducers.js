@@ -103,6 +103,11 @@ function rootReducer(state = initialState, action){
                 ...state,
                 pokemonById_Name:action.payload
             }
+        case 'CREATE_POKEMON':
+            return {
+                ...state
+    
+            }
         default: return state;
     }
 }
