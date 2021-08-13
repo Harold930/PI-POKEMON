@@ -19,6 +19,7 @@ try {
                 id: infoDataBase.id,
                 name: infoDataBase.name.toUpperCase(),
                 attack: infoDataBase.attack,
+                hp: infoDataBase.hp,
                 defense: infoDataBase.defense,
                 speed: infoDataBase.speed,
                 height: infoDataBase.height,

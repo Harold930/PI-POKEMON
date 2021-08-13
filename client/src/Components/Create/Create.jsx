@@ -13,6 +13,7 @@ export default function Create(){
 
     const [input, setInput] = useState({
         name: '',
+        hp:0,
         attack: 0,
         speed: 0,
         defense: 0,
@@ -50,6 +51,7 @@ export default function Create(){
         alert('Pokemon created succesfully');
         setInput({
             name: '',
+            hp: 0,
             attack: 0,
             speed: 0,
             defense: 0,
@@ -68,6 +70,13 @@ export default function Create(){
                     type="text" 
                     name='name'
                     value={input.name}
+                    onChange={handleInput}
+                    />
+                <label>Hp:</label>
+                    <input 
+                    type="number" 
+                    name='hp'
+                    value={input.hp}
                     onChange={handleInput}
                     />
                 <label>Attack:</label>

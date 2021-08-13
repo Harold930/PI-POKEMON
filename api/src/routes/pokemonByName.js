@@ -23,6 +23,7 @@ try {
         const pokemonDataBase = {
             id: infoDataBase[0].id,
             name: infoDataBase[0].name.toUpperCase(),
+            hp: infoDataBase[0].hp,
             attack: infoDataBase[0].attack,
             defense: infoDataBase[0].defense,
             speed: infoDataBase[0].speed,
@@ -58,7 +59,7 @@ try {
                 weight: response.data.weight,
                 types: arrayTypes.map(type => type.type.name),
                 sprite: response.data.sprites.versions[version][color].animated.front_default
-            })}, () => {res.status(404).send('Pokemon dont found')});
+            })}, () => {res.send({msg:'Pokemon dont found'}).status(404)});
 
 }
     

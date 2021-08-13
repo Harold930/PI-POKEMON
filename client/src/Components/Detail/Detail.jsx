@@ -14,17 +14,13 @@ export default function Detail({match}){
         if(match.params.id){
             dispatch(getPokemonById(match.params.id));
         }
-        if(match.params.name){
-            dispatch(getPokemonByName(match.params.name.toLowerCase()));
-        }
     },[]);
 
     
 
     console.log(pokemonById)
-
+    if(pokemonById.msg !== 'Pokemon dont found'){
     return(
-
             <div>
                 <h2>{pokemonById.name}</h2>
                 <h3>#{pokemonById.id}</h3>
@@ -58,6 +54,14 @@ export default function Detail({match}){
                  
                </div>
             </div>
-
     )
-}
+}   else {
+        return (
+            <div>
+                <h1>
+                    Pokemon dont found 
+                </h1>
+            </div>
+        )
+    }
+} 
