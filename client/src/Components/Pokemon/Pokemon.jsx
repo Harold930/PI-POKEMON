@@ -7,7 +7,7 @@ console.log(putinzard)
     return (
         <div>
             <h3>{props.pokemon.name}</h3>
-            <Link to = {`/pokemons/${props.pokemon.id}`} > 
+            <Link to = {`/home/pokemons/${props.pokemon.id}`} > 
                 <img src={props.pokemon.sprite ? props.pokemon.sprite : `${putinzard}`}  width="80" height="100" alt="Dont found" />
             </Link>
             <div>

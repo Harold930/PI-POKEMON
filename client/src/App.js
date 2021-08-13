@@ -11,14 +11,14 @@ function App() {
   return (
     <div className="App">
    <header>
-      <Route  path = '/' component = {Nav}/>
+      <Route  path = '/home' component = {Nav}/>
    </header>
       <Route exact path = '/' component = {LandingPage}/>
-      <Route path = '/home' component = {Home}/>
+      <Route exact path = '/home' component = {Home}/>
       <Switch>
-          <Route path = '/pokemons/create' component={Create}/>
-          <Route path='/pokemons/search?name' component = {Detail}/>
-          <Route path = '/pokemons/:id' component={Detail}/>
+          <Route path = '/home/pokemons/create' component={Create}/>
+          <Route path='/home/pokemons/search?name' component = {Detail}/>
+          <Route path = '/home/pokemons/:id' component={Detail}/>
       </Switch>
     </div>
   );

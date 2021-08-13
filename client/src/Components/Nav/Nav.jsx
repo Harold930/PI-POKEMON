@@ -18,13 +18,13 @@ export default function Nav(){
     }
     return(
         <nav>
-           <NavLink to = '/pokemons/create'>
+           <NavLink to = '/home/pokemons/create'>
             <h1>CREATE POKEMON</h1>
            </NavLink> 
            <NavLink to = '/home'>
             <h1>HOME</h1>
            </NavLink>
-            <button onClick={handleCLick}><NavLink to={`/pokemons/search?name=${name}`}>Unalupita</NavLink></button>
+            <button onClick={handleCLick}><NavLink to={`/home/pokemons/search?name=${name}`}>Unalupita</NavLink></button>
             <input type="text" placeholder='Search by name' value={name} onChange={handleChange}/>
         </nav>
     )
