@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+//------------------------GETS------------------------------------------------
+
 export function getAllPokemons(){
     return async function(dispatch){
         let response = await axios.get('http://localhost:3001/pokemons', {responseType:'json'});
@@ -40,6 +42,9 @@ export function getPokemonById(id){
         });
     }
 }
+
+//-------------------------------FILTER AND SORT----------------------------------------------
+
 export function filterByType(typePokemon){
     console.log(typePokemon)
     return {
@@ -68,6 +73,9 @@ export function sortAlphabetically(payload){
             payload 
         }
 }
+
+//-----------------------POST-----------------------------------------------------------
+
 export function createPokemon(form){
     console.log(form);
     return async function(dispatch){
