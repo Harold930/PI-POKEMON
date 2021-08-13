@@ -4,7 +4,8 @@ const initialState = {
   pokemons:[],
   allPokemons: [],
   types:[],
-  pokemonById_Name:{}
+  pokemonById_Name:{},
+  pokemonCreated:{}
 }
 function rootReducer(state = initialState, action){
     switch(action.type){
@@ -105,8 +106,8 @@ function rootReducer(state = initialState, action){
             }
         case 'CREATE_POKEMON':
             return {
-                ...state
-    
+                ...state,
+                allPokemons:action.payload
             }
         default: return state;
     }

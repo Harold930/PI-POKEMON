@@ -17,14 +17,14 @@ try {
 
             const pokemonDataBase = {
                 id: infoDataBase.id,
-                name: infoDataBase.name,
+                name: infoDataBase.name.toUpperCase(),
                 attack: infoDataBase.attack,
                 defense: infoDataBase.defense,
                 speed: infoDataBase.speed,
                 height: infoDataBase.height,
                 weight: infoDataBase.weight,
+                sprite: infoDataBase.sprite,
                 types: infoDataBase.types.map(type => type.name),
-                // sprite: infoDataBase[0].sprite, despues me fijo qué imagen podría tener acá
             }
             return pokemonDataBase ? res.send(pokemonDataBase) : res.status(404); //De igual manera, fijarme en la data que me viene en los tipos de dieta 
         } else {
@@ -44,7 +44,7 @@ try {
             return infoApi ?  res.send({
                 id: infoApi.data.id,
                 sprite: infoApi.data.sprites.versions[version][color].animated.front_default,
-                name: infoApi.data.name,
+                name: infoApi.data.name.toUpperCase(),
                 hp: hpStat.base_stat,
                 attack: attackStat.base_stat,
                 defense: defenseStat.base_stat,

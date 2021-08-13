@@ -13,7 +13,7 @@ export default function Nav(){
     }
     function handleCLick(e){
         e.preventDefault();
-        dispatch(getPokemonByName(name));
+        dispatch(getPokemonByName(name.toLowerCase()));
         setName('')
     }
     return(

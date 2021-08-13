@@ -69,11 +69,12 @@ export function sortAlphabetically(payload){
         }
 }
 export function createPokemon(form){
-    console.log(form)
+    console.log(form);
     return async function(dispatch){
-        await axios.post(`http://localhost:3001/create`, {form});
+        await axios.post(`http://localhost:3001/create`, form);
         return dispatch({
-            type: 'CREATE_POKEMON'
+            type: 'CREATE_POKEMON',
+            payload: form
         });
     }
 }

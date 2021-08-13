@@ -22,12 +22,13 @@ try {
         console.log('----------------------------------------------------')
         const pokemonDataBase = {
             id: infoDataBase[0].id,
-            name: infoDataBase[0].name,
+            name: infoDataBase[0].name.toUpperCase(),
             attack: infoDataBase[0].attack,
             defense: infoDataBase[0].defense,
             speed: infoDataBase[0].speed,
             height: infoDataBase[0].height,
             weight: infoDataBase[0].weight,
+            sprite: infoDataBase[0].sprite,
             types: infoDataBase[0].types.map(type => type.name),
             // sprite:infoDataBase[0].sprite
         }
@@ -48,7 +49,7 @@ try {
 
             res.send({
                 id: response.data.id,
-                name: response.data.name,
+                name: response.data.name.toUpperCase(),
                 hp: hpStat.base_stat,
                 attack: attackStat.base_stat,
                 defense: defenseStat.base_stat,

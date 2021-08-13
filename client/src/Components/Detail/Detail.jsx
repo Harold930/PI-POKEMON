@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { getPokemonById, getPokemonByName } from '../../Redux/action';
+import putinzard from '../../img/putinzard.jpg'
 
 export default function Detail({match}){
     console.log(match.params.id);
@@ -14,7 +15,7 @@ export default function Detail({match}){
             dispatch(getPokemonById(match.params.id));
         }
         if(match.params.name){
-            dispatch(getPokemonByName(match.params.name));
+            dispatch(getPokemonByName(match.params.name.toLowerCase()));
         }
     },[]);
 
@@ -27,7 +28,7 @@ export default function Detail({match}){
             <div>
                 <h2>{pokemonById.name}</h2>
                 <h3>#{pokemonById.id}</h3>
-                <img src={pokemonById.sprite} alt='Dont found' />
+                <img src={pokemonById.sprite ? pokemonById.sprite : `${putinzard}`} width="80" height="100" alt='Dont found' />
                <div>
                     {
                         pokemonById.types && pokemonById.types.map((pokemon,i) => (

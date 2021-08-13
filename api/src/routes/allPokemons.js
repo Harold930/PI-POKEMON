@@ -15,7 +15,7 @@ try {
     for(let i = 0; i < infoDataBase.length; i++){
         responseDataBase.push({
             id: infoDataBase[i].id,
-            name: infoDataBase[i].name,
+            name: infoDataBase[i].name.toUpperCase(),
             sprite: infoDataBase[i].sprite,
             types: infoDataBase[i].types.map(type => type.name), //Acá primero voy a tener que modificar como viene la información. 
             attack: infoDataBase[i].attack
@@ -45,7 +45,7 @@ try {
 
         responseApi.push({
             id: info.data.id,
-            name: infoApi.data.results[i].name,
+            name: infoApi.data.results[i].name.toUpperCase(),
             sprite: sprite,
             types: arrayTypes.map(el => el.type.name),
             attack: attackStat.base_stat

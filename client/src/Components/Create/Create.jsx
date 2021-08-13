@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createPokemon, getTypes } from '../../Redux/action';
+import { createPokemon, getAllPokemons, getTypes } from '../../Redux/action';
 
 export default function Create(){
     
@@ -18,27 +18,19 @@ export default function Create(){
         defense: 0,
         height: 0,
         weight: 0,
+        sprite: '',
         types:[]
     });
 
     function handleInput(e){
-
-        // e.preventDefault();
-
-        // if(e.target.name === 'types'){
-        //     const typesSelection = input.types;
-        //     setInput({
-        //         ...input,
-        //         [e.target.name]: typesSelection.push(e.target.value)
-        //     })
-        // } else {
             setInput({
                 ...input,
                 [e.target.name]: e.target.value
             });
-        // }
     }
+
     function handleCheckBox(e){
+
         if(e.target.checked){
            setInput({
                ...input,
@@ -55,7 +47,7 @@ export default function Create(){
     function handleSubmit(e){
         e.preventDefault();
         dispatch(createPokemon(input));
-
+        alert('Pokemon created succesfully');
         setInput({
             name: '',
             attack: 0,
@@ -63,12 +55,14 @@ export default function Create(){
             defense: 0,
             height: 0,
             weight: 0,
+            sprite:'',
             types:[]
-        })
+        });
     }
+
     return(
         <div>
-            <form >  
+            <form onSubmit={handleSubmit}>  
                 <label>Name:</label>
                     <input 
                     type="text" 
@@ -115,6 +109,13 @@ export default function Create(){
                     value={input.weight}
                     onChange={handleInput}
                     />
+                <label>Sprite:</label>
+                    <input 
+                    type="text" 
+                    name='sprite'
+                    value={input.sprite}
+                    onChange={handleInput}
+                    />
                 <div>
                     <label>Types:</label>
                         <div>
@@ -131,7 +132,7 @@ export default function Create(){
                         ))}
                         </div>
                 </div>
-                <button type='submit' onSubmit={handleSubmit}>SUBMIT</button>
+                <button type='submit'>SUBMIT</button>
             </form>
         </div>
     )
