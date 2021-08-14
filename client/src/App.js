@@ -9,7 +9,7 @@ import Create from './Components/Create/Create';
 
 function App() {
   return (
-    <div className="App">
+    <div >
    <header>
       <Route  path = '/home' component = {Nav}/>
    </header>

@@ -1,7 +1,18 @@
 .landing{
-    display:block;
+    display:flex;
     justify-content:  center;
     align-items: center;
-    margin: 200px;
-   
+    height: 625px;
+    background-image: url(../../img/toys-5353951_640.jpg);
+    background-size: contain;
+}
+.h2{
+    color: white;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+}
+.pokebola{
+    align-self: center;
 }
