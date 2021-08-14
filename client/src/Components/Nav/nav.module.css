@@ -1,0 +1,10 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid;
+    height: 100px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 25px;
+}

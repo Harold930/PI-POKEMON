@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getPokemonByName } from '../../Redux/action';
+import nav from './nav.module.css'
 
 export default function Nav(){
     
@@ -17,15 +18,17 @@ export default function Nav(){
         setName('')
     }
     return(
-        <nav>
+        <nav className = {nav.nav}>
            <NavLink to = '/home/pokemons/create'>
             <h1>CREATE POKEMON</h1>
            </NavLink> 
            <NavLink to = '/home'>
             <h1>HOME</h1>
            </NavLink>
-            <button onClick={handleCLick}><NavLink to={`/home/pokemons/search?name=${name}`}>Unalupita</NavLink></button>
-            <input type="text" placeholder='Search by name' value={name} onChange={handleChange}/>
+           <div>
+                <button onClick={handleCLick}><NavLink to={`/home/pokemons/search?name=${name}`}>Unalupita</NavLink></button>
+                <input type="text" placeholder='Search by name' value={name} onChange={handleChange}/>
+           </div>
         </nav>
     )
 }
