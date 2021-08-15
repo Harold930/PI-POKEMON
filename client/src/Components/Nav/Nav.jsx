@@ -20,10 +20,10 @@ export default function Nav(){
     return(
         <nav className = {nav.nav}>
            <NavLink to = '/home/pokemons/create'>
-            <h1>CREATE POKEMON</h1>
+            <h1 className={nav.font}>CREATE POKEMON</h1>
            </NavLink> 
            <NavLink to = '/home'>
-            <h1>HOME</h1>
+            <h1 className={nav.font} >HOME</h1>
            </NavLink>
            <div>
                 <button onClick={handleCLick}><NavLink to={`/home/pokemons/search?name=${name}`}>Unalupita</NavLink></button>

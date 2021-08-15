@@ -4,6 +4,7 @@ import { getAllPokemons,getTypes,sortByAttack, sortAlphabetically } from '../../
 import Pokemons from '../Pokemons/Pokemons';
 import Filter from '../Filter/Filter';
 import Paged from '../Paged/Paged';
+import home from './home.module.css'
 
 export default function Home(){
     
@@ -44,7 +45,7 @@ export default function Home(){
     }
 
     return (
-    <div>
+    <div className={home.home}>
         <Filter types={types} />
         <span>Sort by attack:</span>
         <select onChange={(e) => handleSortByAttack(e)}> 

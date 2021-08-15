@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  background-image: url(../src/img/pokemon-1593048.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+
 }
 
 .App-logo {

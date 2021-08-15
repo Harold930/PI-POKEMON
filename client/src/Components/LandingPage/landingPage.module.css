@@ -3,11 +3,13 @@
     justify-content:  center;
     align-items: center;
     height: 625px;
-    background-image: url(../../img/toys-5353951_640.jpg);
-    background-size: contain;
+    background-image: url(../../img/esta_si.jpeg);
+    background-size: cover;
 }
 .h2{
     color: white;
+    font-family: monospace;
+    font-size: 25px;
 }
 .content{
     display: flex;

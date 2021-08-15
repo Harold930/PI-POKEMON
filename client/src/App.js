@@ -10,16 +10,16 @@ import Create from './Components/Create/Create';
 function App() {
   return (
     <div>
-   <header>
-      <Route  path = '/home' component = {Nav}/>
-   </header>
       <Route exact path = '/' component = {LandingPage}/>
-      <Route exact path = '/home' component = {Home}/>
-      <Switch>
-          <Route path = '/home/pokemons/create' component={Create}/>
-          <Route path='/home/pokemons/search?name' component = {Detail}/>
-          <Route path = '/home/pokemons/:id' component={Detail}/>
-      </Switch>
+      <div className='App'>
+        <Route  path = '/home' component = {Nav}/>
+        <Route exact path = '/home' component = {Home}/>
+        <Switch>
+            <Route path = '/home/pokemons/create' component={Create}/>
+            <Route path='/home/pokemons/search?name' component = {Detail}/>
+            <Route path = '/home/pokemons/:id' component={Detail}/>
+        </Switch>
+      </div>
     </div>
   );
 }
