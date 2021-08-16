@@ -19,3 +19,17 @@
 .font{
     color: white;
 }
+.button{
+    height: 10px;
+    width: 10px;
+}
+.input{
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: bold;
+    /* -------------------------- */
+    background-color: transparent;
+    border-radius: 5px;
+    color:white
+}
+
