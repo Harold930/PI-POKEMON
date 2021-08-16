@@ -1,5 +1,9 @@
-/* .home{
-    background-image: url(../../img/pokemon-1593048.jpg);
-    background-size: contain;
-    background-attachment: fixed;
-} */
+.filterSort{
+    display: flex;
+    justify-content: space-around;
+}
+.select{
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid white;
+}
