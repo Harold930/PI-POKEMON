@@ -1,4 +1,5 @@
 import React from 'react';
+import stylePaged from './paged.module.css';
 
 export default function Paged ({pokemons, pokemonsPerPage, paged}){
 
@@ -9,16 +10,14 @@ export default function Paged ({pokemons, pokemonsPerPage, paged}){
     }
 
     return(
-        <nav>
-            <ul>
+        <div className={stylePaged.paged}>
                 {
                    arrayNumPg && arrayNumPg.map((num,i) => (
-                        <li key={i}>
-                            <button key={i} onClick={()=>paged(num)}>{num}</button>
-                        </li>
+                        <span key={i}>
+                            <button key={i} onClick={()=>paged(num)} className={stylePaged.button}>{num}</button>
+                        </span>
                     ))
                 }
-            </ul>
-        </nav>
+        </div>
     )
 }

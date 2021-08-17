@@ -24,7 +24,7 @@ export default function Home(){
     useEffect(()=>{
         dispatch(getAllPokemons());
         dispatch(getTypes());
-    },[dispatch]);
+    },[]);
 
     function paged(numPg){
         setCurrentPage(numPg);
@@ -89,11 +89,11 @@ export default function Home(){
             </div>
         </div>
         <Pokemons pokemons={currentPokemons}/>
-        <Paged
-         pokemons={pokemons.length}
-         pokemonsPerPage={pokemonsPerPage}
-         paged={paged}
-        />
+            <Paged
+            pokemons={pokemons.length}
+            pokemonsPerPage={pokemonsPerPage}
+            paged={paged}
+            />
     </div>
     )
 

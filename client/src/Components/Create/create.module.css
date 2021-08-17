@@ -1,0 +1,41 @@
+.create{
+  height: 500px;
+
+}
+.contain{
+    border: 0px solid white;
+    height: 400px;
+    padding: 25px;
+    background: rgba(123, 125, 125, 0.5);
+
+}   
+.stats_name_sprite{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input{
+    height: 15px;
+    width: 100px;
+    background: rgba(123, 125, 125, 0.5);
+}
+.submit{
+    margin:15px;
+    width: 65px;
+    height: 35px;
+    background: rgba(123, 125, 125, 0.5);
+    font-family: monospace;
+    font-weight: bold;
+}
+.label{
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+}
+.labelCheck{
+    font-family: monospace;
+    font-variant: small-caps;   
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}

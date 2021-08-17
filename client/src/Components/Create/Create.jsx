@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPokemon, getAllPokemons, getTypes } from '../../Redux/action';
+import create from './create.module.css';
 
 export default function Create(){
     
@@ -63,70 +64,80 @@ export default function Create(){
     }
 
     return(
-        <div>
-            <form onSubmit={handleSubmit}>  
-                <label>Name:</label>
-                    <input 
-                    type="text" 
-                    name='name'
-                    value={input.name}
-                    onChange={handleInput}
-                    />
-                <label>Hp:</label>
-                    <input 
-                    type="number" 
-                    name='hp'
-                    value={input.hp}
-                    onChange={handleInput}
-                    />
-                <label>Attack:</label>
-                    <input 
-                    type="number" 
-                    name='attack'
-                    value={input.attack}
-                    onChange={handleInput}
-
-                    />
-                <label>Defense:</label>
-                    <input 
-                    type="number" 
-                    name='defense'
-                    value={input.defense}
-                    onChange={handleInput}
-
-                    />
-                <label>Speed:</label>
-                    <input 
-                    type="number" 
-                    name='speed'
-                    value={input.speed}
-                    onChange={handleInput}
-
-                    />
-                <label>Height:</label>
-                    <input 
-                    type="number" 
-                    name='height'
-                    value={input.height}
-                    onChange={handleInput}
-
-                    />
-                <label>Weight:</label>
-                    <input 
-                    type="number" 
-                    name='weight'
-                    value={input.weight}
-                    onChange={handleInput}
-                    />
-                <label>Sprite:</label>
-                    <input 
-                    type="text" 
-                    name='sprite'
-                    value={input.sprite}
-                    onChange={handleInput}
-                    />
-                <div>
-                    <label>Types:</label>
+        <div className={create.create}>
+            <div className={create.contain}>
+            <form onSubmit={handleSubmit} >
+               <div className={create.stats_name_sprite}>
+                        <label className={create.label}>Name:</label>
+                            <input 
+                            className={create.input}
+                            type="text" 
+                            name='name'
+                            value={input.name}
+                            onChange={handleInput}
+                            />
+                        <label className={create.label}>Hp:</label>
+                            <input 
+                            className={create.input}
+                            type="number" 
+                            name='hp'
+                            value={input.hp}
+                            onChange={handleInput}
+                            />
+                        <label className={create.label}>Attack:</label>
+                            <input 
+                            className={create.input}
+                            type="number" 
+                            name='attack'
+                            value={input.attack}
+                            onChange={handleInput}
+                            
+                            />
+                        <label className={create.label}>Defense:</label>
+                            <input 
+                            className={create.input}
+                            type="number" 
+                            name='defense'
+                            value={input.defense}
+                            onChange={handleInput}
+                            
+                            />
+                        <label className={create.label}>Speed:</label>
+                            <input 
+                            className={create.input}
+                            type="number" 
+                            name='speed'
+                            value={input.speed}
+                            onChange={handleInput}
+                            
+                            />
+                        <label className={create.label}>Height:</label>
+                            <input 
+                            className={create.input}
+                            type="number" 
+                            name='height'
+                            value={input.height}
+                            onChange={handleInput}
+                            
+                            />
+                        <label className={create.label}>Weight:</label>
+                            <input 
+                            className={create.input}
+                            type="number" 
+                            name='weight'
+                            value={input.weight}
+                            onChange={handleInput}
+                            />
+                        <label className={create.label}>Sprite:</label>
+                            <input 
+                            className={create.input}
+                            type="text" 
+                            name='sprite'
+                            value={input.sprite}
+                            onChange={handleInput}
+                            />
+                
+                    <label className={create.label}>Types:</label>
                         <div>
                         {types.map((type) =>(
                                 <span key = {type.id}>
@@ -136,13 +147,15 @@ export default function Create(){
                                     value={type.name}
                                     onChange={handleCheckBox}
                                     />
-                                    <label name={type}>{type.name}</label>
+                                    <label className={create.labelCheck}>{type.name}</label>
                                 </span>
                         ))}
-                        </div>
                 </div>
-                <button type='submit'>SUBMIT</button>
+                <button type='submit' className={create.submit}>SUBMIT</button>
+                </div>
+
             </form>
+                        </div>
         </div>
     )
 }

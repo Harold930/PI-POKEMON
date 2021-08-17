@@ -1,0 +1,12 @@
+.paged{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+.button{
+    height: 45px;
+    width: 45px;
+    background-color: transparent;
+    background: rgba(0, 0, 0);
+    color:white
+}
