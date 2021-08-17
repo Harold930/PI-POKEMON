@@ -24,7 +24,7 @@ export default function Home(){
     useEffect(()=>{
         dispatch(getAllPokemons());
         dispatch(getTypes());
-    },[]);
+    },[dispatch]);
 
     function paged(numPg){
         setCurrentPage(numPg);

@@ -14,7 +14,7 @@ export default function Detail({match}){
         if(match.params.id){
             dispatch(getPokemonById(match.params.id));
         }
-    },[]);
+    },[dispatch]);
 
     
 

@@ -1,0 +1,22 @@
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* ---------------------- */
+    border: 1px solid white;
+    border-radius: 5px;
+    /* --------------------- */
+    margin: 15px;
+    padding-top: 0px;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 35px;
+    background: rgba(123, 125, 125, 0.5);
+    box-shadow: 3px 6px ;
+}
+.font{
+    font-variant: small-caps;
+    font-family: monospace;
+    font-size: 20px;
+    margin-top: 5px;
+}
