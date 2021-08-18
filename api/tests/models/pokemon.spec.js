@@ -32,8 +32,7 @@ describe('Pokemon model', () => {
           height: 200
         });
         let pokemon = await Pokemon.findAll({where: {name : 'Pikachu'}});
-        console.log(pokemon)
-        expect(pokemon[0]).to.be.a('object');
+       expect(pokemon[0]).to.be.a('object');
       });
     });
 
