@@ -86,3 +86,9 @@ export function createPokemon(form){
         });
     }
 }
+// --------------------------RESET-------------------------------------------
+export function reset(){
+    return {
+            type: 'RESET',
+        }
+}

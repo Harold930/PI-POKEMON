@@ -14,5 +14,7 @@
 }
 .contain{
     height: 500px;
-
+}
+.cursor{
+    cursor: pointer;
 }

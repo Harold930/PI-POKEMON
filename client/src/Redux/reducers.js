@@ -45,7 +45,7 @@ function rootReducer(state = initialState, action){
         case 'SORT_BY_ATTACK':
             let arraySort = [];
          if(action.payload === 'asc'){
-            arraySort = state.allPokemons.sort((a,b) => {
+            arraySort = state.pokemons.sort((a,b) => {
                 if(a.attack > b.attack){
                     return 1;
                 }
@@ -55,7 +55,7 @@ function rootReducer(state = initialState, action){
                 return 0;
             });
         } else if(action.payload === 'desc'){
-            arraySort = state.allPokemons.sort((a,b) => {
+            arraySort = state.pokemons.sort((a,b) => {
                 if(a.attack < b.attack){
                     return 1;
                 }
@@ -73,7 +73,7 @@ function rootReducer(state = initialState, action){
         case 'SORT_ALPHABETICALLY':
             let arraySort_name = [];
             if(action.payload === 'asc_name'){
-                arraySort_name = state.allPokemons.sort((a,b) => {
+                arraySort_name = state.pokemons.sort((a,b) => {
                     if(a.name > b.name){
                         return 1;
                     }
@@ -84,7 +84,7 @@ function rootReducer(state = initialState, action){
                 });
             }
             if(action.payload === 'desc_name'){
-                arraySort_name = state.allPokemons.sort((a,b) => {
+                arraySort_name = state.pokemons.sort((a,b) => {
                     if(a.name < b.name){
                         return 1;
                     }
@@ -108,6 +108,11 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 allPokemons:action.payload
+            }
+        case 'RESET':
+            return {
+              ...state,
+              pokemons:state.allPokemons
             }
         default: return state;
     }

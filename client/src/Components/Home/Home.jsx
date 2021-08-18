@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllPokemons,getTypes,sortByAttack, sortAlphabetically, filterByPokemons,filterByType } from '../../Redux/action';
+import { getAllPokemons,getTypes,sortByAttack, sortAlphabetically, filterByPokemons,filterByType, reset } from '../../Redux/action';
 import Pokemons from '../Pokemons/Pokemons';
 import Paged from '../Paged/Paged';
 import home from './home.module.css'
@@ -24,7 +24,7 @@ export default function Home(){
     useEffect(()=>{
         dispatch(getAllPokemons());
         dispatch(getTypes());
-    },[]);
+    },[dispatch]);
 
     function paged(numPg){
         setCurrentPage(numPg);
@@ -45,11 +45,16 @@ export default function Home(){
     }
 
     function handleFilterByType(e){
+        e.preventDefault();
         dispatch(filterByType(e.target.value));
     }
 
     function handleFilterPokemons(e){
         dispatch(filterByPokemons(e.target.value));
+    }
+    function handleResetClick(e){
+        e.preventDefault();
+        dispatch(reset());
     }
 console.log(pokemons)
     if(pokemons.length !== 0){
@@ -87,6 +92,9 @@ console.log(pokemons)
                         <option value="asc_name">A-Z</option>
                         <option value="desc_name">Z-A</option>
                     </select>
+                </div>
+                <div>
+                    <span className={home.cursor} onClick={handleResetClick}>Reset</span>
                 </div>
             </div>
             <Pokemons pokemons={currentPokemons}/>
@@ -133,10 +141,11 @@ console.log(pokemons)
                         <option value="desc_name">Z-A</option>
                     </select>
                 </div>
+                <div>
+                    <span className={home.cursor} onClick={handleResetClick}>Reset</span>
+                </div>
             </div>
             </div>
-            )
+        )
     }
- 
-
 }

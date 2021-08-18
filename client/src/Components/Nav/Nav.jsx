@@ -13,18 +13,19 @@ export default function Nav(){
     function handleChange(e){
         setName(e.target.value);
     }
+
+    function handleSearch  (e) {
+        e.preventDefault();
+        dispatch(getPokemonByName(name.toLowerCase()));
+        setName('');
+    }
+
     function handleCLick(e){
         e.preventDefault();
         dispatch(getPokemonByName(name.toLowerCase()));
         setName('')
     }
-    // function handleKeyPress(e){
-    //     e.preventDefault();
-    //     if(e.key === 'Enter'){
-    //         dispatch(getPokemonByName(name.toLowerCase()));
-    //         setName('');
-    //     }
-    // }
+
     return(
         <nav className = {nav.nav}>
            <NavLink to = '/home/pokemons/create'  style={{ textDecoration: 'none' }}>
@@ -35,13 +36,7 @@ export default function Nav(){
            </NavLink>
            <div>
                 <button onClick={handleCLick} ><NavLink to={`/home/pokemons/search?name=${name}`} style={{ textDecoration: 'none' }}><img src={icono} className={nav.button}/></NavLink></button>
-                <input type="text" placeholder='Search by name' value={name}  onChange={handleChange}  onKeyDown={(e) => {
-    if (e.key === "Enter") {
-      e.preventDefault()
-      dispatch(getPokemonByName(name.toLowerCase()));
-      setName('')
-    }
-  }}className={nav.input}/>
+                <input type="text" placeholder='Search by name' value={name}  onChange={handleChange} onKeyPress={(e) => e.key === 'Enter' && handleSearch(e)} className={nav.input}/>
            </div>
         </nav>
     )
