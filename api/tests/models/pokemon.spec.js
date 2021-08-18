@@ -19,4 +19,22 @@ describe('Pokemon model', () => {
       });
     });
   });
+  describe('Create a pokemon succesfully', () => {
+
+    beforeEach(() => Pokemon.sync({ force: true }));
+
+      it('should create a pokemon succesfully and return a object', async () => {
+       await Pokemon.create({ 
+          name: 'Pikachu',
+          hp: 150,
+          attack: 150,
+          speed: 50,
+          height: 200
+        });
+        let pokemon = await Pokemon.findAll({where: {name : 'Pikachu'}});
+        console.log(pokemon)
+        expect(pokemon[0]).to.be.a('object');
+      });
+    });
+
 });

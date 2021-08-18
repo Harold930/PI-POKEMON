@@ -112,7 +112,7 @@ function rootReducer(state = initialState, action){
         case 'RESET':
             return {
               ...state,
-              pokemons:state.allPokemons
+              pokemons:[...state.allPokemons]
             }
         default: return state;
     }

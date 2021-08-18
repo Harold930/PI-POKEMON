@@ -8,7 +8,9 @@ router.get('/', async (req,res,next) => {
 
 try {
     const name = req.query.name;
-
+    if(!name){
+        {res.send({msg:'Pokemon dont found'}).status(404)}
+    }
     //Primero pido los pokemons que están guardados de manera local, o sea, en mi base de datos pokemon.
 
     const infoDataBase = await Pokemon.findAll({
