@@ -63,7 +63,7 @@ export default function Detail({match}){
     )
 }   else {
         return (
-            <div>
+            <div className={detail.contain}>
                 <h1>
                     Pokemon dont found 
                 </h1>

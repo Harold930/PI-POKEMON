@@ -6,7 +6,7 @@ import nav from './nav.module.css';
 import icono from '../../img/lupa.webp';
 
 export default function Nav(){
-    
+
     const [name, setName] = useState('');
     const dispatch = useDispatch();
 
@@ -18,6 +18,13 @@ export default function Nav(){
         dispatch(getPokemonByName(name.toLowerCase()));
         setName('')
     }
+    // function handleKeyPress(e){
+    //     e.preventDefault();
+    //     if(e.key === 'Enter'){
+    //         dispatch(getPokemonByName(name.toLowerCase()));
+    //         setName('');
+    //     }
+    // }
     return(
         <nav className = {nav.nav}>
            <NavLink to = '/home/pokemons/create'  style={{ textDecoration: 'none' }}>
@@ -27,8 +34,14 @@ export default function Nav(){
             <h1 className={nav.font} >HOME</h1>
            </NavLink>
            <div>
-                <button onClick={handleCLick}><NavLink to={`/home/pokemons/search?name=${name}`}  style={{ textDecoration: 'none' }}><img src={icono} className={nav.button}/></NavLink></button>
-                <input type="text" placeholder='Search by name' value={name} onChange={handleChange} className={nav.input}/>
+                <button onClick={handleCLick} ><NavLink to={`/home/pokemons/search?name=${name}`} style={{ textDecoration: 'none' }}><img src={icono} className={nav.button}/></NavLink></button>
+                <input type="text" placeholder='Search by name' value={name}  onChange={handleChange}  onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      e.preventDefault()
+      dispatch(getPokemonByName(name.toLowerCase()));
+      setName('')
+    }
+  }}className={nav.input}/>
            </div>
         </nav>
     )

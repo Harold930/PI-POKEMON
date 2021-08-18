@@ -32,7 +32,7 @@ function rootReducer(state = initialState, action){
                 pokemons: pokemonsFiltered
             }
         case 'FILTER_BY_POKEMONS':
-         var pokemons_Filtered = [];     
+         var pokemons_Filtered = [];
           switch(action.payload){
             case 'all': pokemons_Filtered = state.allPokemons; break;
             case 'create': pokemons_Filtered = state.allPokemons.filter(pokemon => typeof(pokemon.id) === 'string'); break;

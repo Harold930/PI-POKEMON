@@ -4,7 +4,7 @@ import { getAllPokemons,getTypes,sortByAttack, sortAlphabetically, filterByPokem
 import Pokemons from '../Pokemons/Pokemons';
 import Paged from '../Paged/Paged';
 import home from './home.module.css'
-// import './home.module.css'
+
 
 export default function Home(){
     
@@ -51,50 +51,92 @@ export default function Home(){
     function handleFilterPokemons(e){
         dispatch(filterByPokemons(e.target.value));
     }
-
+console.log(pokemons)
+    if(pokemons.length !== 0){
     return (
-    <div >
-        <div className={home.filterSort}>
-            <div className={home.input}>
-                <span>Pokemons:</span>
-                <select onChange={handleFilterPokemons} >
-                    <option value="all" >All</option>
-                    <option value="create" >Created</option>
-                    <option value="from_api" >From API</option>
-                </select>
+        <div >
+            <div className={home.filterSort}>
+                <div className={home.input}>
+                    <span>Pokemons:</span>
+                    <select onChange={handleFilterPokemons} >
+                        <option value="all" >All</option>
+                        <option value="create" >Created</option>
+                        <option value="from_api" >From API</option>
+                    </select>
+                </div>
+                <div className={home.input}>
+                    <span >Filter by type:</span>
+                    <select onChange={(e) => handleFilterByType(e)} >
+                        {
+                            types?.map((type,i) => (
+                                <option value={type.name.toLowerCase()} key ={i}>{type.name.toUpperCase()}</option>
+                                ))
+                            }
+                    </select>
+                </div >
+                <div className={home.input}>
+                    <span>Sort by attack:</span>
+                    <select onChange={(e) => handleSortByAttack(e)} > 
+                        <option value="desc">Higher to lower</option>
+                        <option value="asc">Lower to higher</option>
+                    </select>
+                </div>
+                <div className={home.input}>
+                    <span>Sort alphabetically:</span>
+                    <select onChange={handleSortByAlphabetically}> 
+                        <option value="asc_name">A-Z</option>
+                        <option value="desc_name">Z-A</option>
+                    </select>
+                </div>
             </div>
-            <div className={home.input}>
-                <span >Filter by type:</span>
-                <select onChange={(e) => handleFilterByType(e)} >
-                    {
-                        types?.map((type,i) => (
-                            <option value={type.name.toLowerCase()} key ={i}>{type.name.toUpperCase()}</option>
-                            ))
-                        }
-                </select>
-            </div >
-            <div className={home.input}>
-                <span>Sort by attack:</span>
-                <select onChange={(e) => handleSortByAttack(e)} > 
-                    <option value="desc">Higher to lower</option>
-                    <option value="asc">Lower to higher</option>
-                </select>
-            </div>
-            <div className={home.input}>
-                <span>Sort alphabetically:</span>
-                <select onChange={handleSortByAlphabetically}> 
-                    <option value="asc_name">A-Z</option>
-                    <option value="desc_name">Z-A</option>
-                </select>
-            </div>
+            <Pokemons pokemons={currentPokemons}/>
+                <Paged
+                pokemons={pokemons.length}
+                pokemonsPerPage={pokemonsPerPage}
+                paged={paged}
+                />
         </div>
-        <Pokemons pokemons={currentPokemons}/>
-            <Paged
-            pokemons={pokemons.length}
-            pokemonsPerPage={pokemonsPerPage}
-            paged={paged}
-            />
-    </div>
     )
+    } else {
+        return(
+            <div className={home.contain}>
+                <div className={home.filterSort}>
+                <div className={home.input}>
+                    <span>Pokemons:</span>
+                    <select onChange={handleFilterPokemons} >
+                        <option value="all" >All</option>
+                        <option value="create" >Created</option>
+                        <option value="from_api" >From API</option>
+                    </select>
+                </div>
+                <div className={home.input}>
+                    <span >Filter by type:</span>
+                    <select onChange={(e) => handleFilterByType(e)} >
+                        {
+                            types?.map((type,i) => (
+                                <option value={type.name.toLowerCase()} key ={i}>{type.name.toUpperCase()}</option>
+                                ))
+                            }
+                    </select>
+                </div >
+                <div className={home.input}>
+                    <span>Sort by attack:</span>
+                    <select onChange={(e) => handleSortByAttack(e)} > 
+                        <option value="desc">Higher to lower</option>
+                        <option value="asc">Lower to higher</option>
+                    </select>
+                </div>
+                <div className={home.input}>
+                    <span>Sort alphabetically:</span>
+                    <select onChange={handleSortByAlphabetically}> 
+                        <option value="asc_name">A-Z</option>
+                        <option value="desc_name">Z-A</option>
+                    </select>
+                </div>
+            </div>
+            </div>
+            )
+    }
+ 
 
 }
