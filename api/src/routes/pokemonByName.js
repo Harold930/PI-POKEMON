@@ -18,10 +18,9 @@ try {
             name: name
         },
         include : Type
-    });    
+    });
     if(infoDataBase.length !== 0){ 
-        console.log(infoDataBase,'<<<----soy la informacion de la base de datos');
-        console.log('----------------------------------------------------')
+
         const pokemonDataBase = {
             id: infoDataBase[0].id,
             name: infoDataBase[0].name.toUpperCase(),
@@ -33,14 +32,13 @@ try {
             weight: infoDataBase[0].weight,
             sprite: infoDataBase[0].sprite,
             types: infoDataBase[0].types.map(type => type.name),
-            // sprite:infoDataBase[0].sprite
         }
 
         res.send(pokemonDataBase);
     } else {
         //Luego, pido la misma información, pero a la API.
         axios.get(`${API_URL}/${name}`).then(response => {
-                console.log(name)
+
             let stats = response.data.stats;
             let hpStat = stats.find(element => element.stat.name === 'hp');
             let attackStat = stats.find(element => element.stat.name === 'attack');

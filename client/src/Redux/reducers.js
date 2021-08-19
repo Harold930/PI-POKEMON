@@ -1,5 +1,4 @@
 
-
 const initialState = {
   pokemons:[],
   allPokemons: [],
@@ -7,6 +6,7 @@ const initialState = {
   pokemonById_Name:{},
   pokemonCreated:{}
 }
+
 function rootReducer(state = initialState, action){
     switch(action.type){
         case 'GET_ALL_POKEMONS':
@@ -24,6 +24,11 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 pokemonById_Name: action.payload
+            }
+        case 'GET_POKEMONS_BY_ID':
+            return {
+                ...state,
+                pokemonById_Name:action.payload
             }
         case 'FILTER_BY_TYPE':
           const pokemonsFiltered = state.allPokemons.filter(pokemon => pokemon.types.includes(action.payload) === true);
@@ -65,7 +70,6 @@ function rootReducer(state = initialState, action){
                 return 0;
             });
         }
-        console.log(arraySort ,'<<<<<<<<-------------')
             return {
                 ...state,
                 pokemons: arraySort
@@ -94,16 +98,10 @@ function rootReducer(state = initialState, action){
                     return 0;
                 });
            }
-           console.log(arraySort_name)
                return {
                 ...state,
                 pokemons: arraySort_name
                }
-        case 'GET_POKEMONS_BY_ID':
-            return {
-                ...state,
-                pokemonById_Name:action.payload
-            }
         case 'CREATE_POKEMON':
             return {
                 ...state,

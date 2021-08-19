@@ -11,7 +11,6 @@ try {
         const id = req.params.id;
 
         if(id.length > 2 ){
-            //si es mayor a 2, busco el pokemon en mi base de datos.
 
             const infoDataBase = await Pokemon.findByPk(id, {include : Type});
 
@@ -27,9 +26,9 @@ try {
                 sprite: infoDataBase.sprite,
                 types: infoDataBase.types.map(type => type.name),
             }
-            return pokemonDataBase ? res.send(pokemonDataBase) : res.status(404); //De igual manera, fijarme en la data que me viene en los tipos de dieta 
+            return pokemonDataBase ? res.send(pokemonDataBase) : res.status(404); 
         } else {
-            //si es menor a 2, entonces busco el pokemon en la api.
+
             const infoApi = await axios.get(`${API_URL}/${id}`);
 
             let stats = infoApi.data.stats;

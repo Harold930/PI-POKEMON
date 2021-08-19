@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
-const { Op } = require('sequelize');
+// const { Op } = require('sequelize');
 const {Pokemon, Type} = require('../db');
 const {API_URL} = process.env;
 
@@ -17,10 +17,11 @@ try {
             id: infoDataBase[i].id,
             name: infoDataBase[i].name.toUpperCase(),
             sprite: infoDataBase[i].sprite,
-            types: infoDataBase[i].types.map(type => type.name), //Acá primero voy a tener que modificar como viene la información. 
+            types: infoDataBase[i].types.map(type => type.name),
             attack: infoDataBase[i].attack
         })
     }
+
     const infoApi = await axios.get(`${API_URL}?limit=40`);
 
     let responseApi = [];
